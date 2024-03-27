@@ -1,6 +1,18 @@
 # quote-me-when-you-can
 fortune based quotes whenever you need
 
+## How it is seen
+
+<img width="446" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/15f5f210-6208-43bc-aacc-3d22749e5b04">
+
+<img width="415" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/5a4c7527-44c3-4248-a21b-f771070dec7c">
+
+<img width="451" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/23db2182-c74b-4318-a26c-3977448b1e12">
+
+<img width="413" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/b7c92f4a-3d3d-46c1-8786-ab9c1b3b0319">
+
+<img width="420" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/97644f65-0237-41ee-a9ee-8079a5653cf8">
+
 ## How to use
 
 ### Pre-requisites
@@ -46,18 +58,6 @@ echo "fortune $HOME/fortunes | cowsay | lolcat" >> ~/.bashrc
 ```bash
 echo "fortune $HOME/fortunes | cowsay | lolcat" >> ~/.zshrc
 ```
-
-## Screenshots
-
-<img width="446" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/15f5f210-6208-43bc-aacc-3d22749e5b04">
-
-<img width="415" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/5a4c7527-44c3-4248-a21b-f771070dec7c">
-
-<img width="451" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/23db2182-c74b-4318-a26c-3977448b1e12">
-
-<img width="413" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/b7c92f4a-3d3d-46c1-8786-ab9c1b3b0319">
-
-<img width="420" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/97644f65-0237-41ee-a9ee-8079a5653cf8">
 
 
 
