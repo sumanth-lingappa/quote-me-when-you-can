@@ -1,5 +1,7 @@
 # quote-me-when-you-can
-fortune based quotes whenever you need
+fortune based custom quotes whenever you need
+
+add your own quotes in [quotes](./quotes/) folder
 
 ## How it is seen
 
@@ -59,6 +61,34 @@ echo "fortune $HOME/fortunes | cowsay | lolcat" >> ~/.bashrc
 echo "fortune $HOME/fortunes | cowsay | lolcat" >> ~/.zshrc
 ```
 
+### TIP2: Create alias for the `fortune` command to read the quotes from your custom folder
+
+```bash
+echo "alias fortune='fortune $HOME/fortunes | cowsay | lolcat'" >> ~/.bashrc
+```
+
+```bash
+echo "alias fortune='fortune $HOME/fortunes | cowsay | lolcat'" >> ~/.zshrc
+```
+
+> Next time when you are in your terminal, you can simply type `fortune` command to give you a quote
+
+```bash
+❯ fortune
+ _________________________________________
+/ "One of my productive days was throwing \
+| away 1000 lines of code"                |
+|                                         |
+\ - Ken Thomson                           /
+ -----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+        
+❯
+```
 
 
 
