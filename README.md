@@ -17,6 +17,12 @@ bash ~/.quote-me/install.sh --update
 bash ~/.quote-me/install.sh --uninstall
 ```
 
+Test the installer in Docker:
+
+```bash
+docker build -t quote-me-test .
+```
+
 ## How it is seen
 
 <img width="446" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/15f5f210-6208-43bc-aacc-3d22749e5b04">

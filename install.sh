@@ -7,7 +7,7 @@ SHELL_RC="$HOME/.zshrc"
 
 case "${1:-}" in
   --uninstall)
-    [[ -f "$SHELL_RC" ]] && sed -i '' '/# quote-me start/,/# quote-me end/d' "$SHELL_RC"
+    [[ -f "$SHELL_RC" ]] && sed -i.bak '/# quote-me start/,/# quote-me end/d' "$SHELL_RC" && rm "$SHELL_RC.bak"
     exit 0
     ;;
   --update)
