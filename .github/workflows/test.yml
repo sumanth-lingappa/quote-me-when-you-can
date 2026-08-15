@@ -22,6 +22,7 @@ jobs:
           export HOME="$(mktemp -d)"
           export SHELL="/bin/$TEST_SHELL"
           bash install.sh
+          bash install.sh
           shell_rc="$HOME/.${TEST_SHELL}rc"
           first="$("/bin/$TEST_SHELL" -ic "source \"$shell_rc\"")"
           second="$("/bin/$TEST_SHELL" -ic "source \"$shell_rc\"")"
@@ -33,6 +34,7 @@ jobs:
         run: |
           $env:HOME = Join-Path $env:RUNNER_TEMP "quote-me-$([guid]::NewGuid())"
           New-Item -ItemType Directory $env:HOME | Out-Null
+          ./install.ps1
           ./install.ps1
           $first = pwsh -Command '$null'
           $second = pwsh -Command '$null'

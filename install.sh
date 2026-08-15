@@ -18,9 +18,9 @@ case "${1:-}" in
     git -C "$QUOTE_DIR" pull --ff-only
     ;;
   '')
-    if [[ -d "$QUOTE_DIR" ]]; then
-      echo "Already installed. Run: bash ~/.quote-me/install.sh --update"
-      exit 0
+    if [[ -d "$QUOTE_DIR/.git" ]]; then
+      git -C "$QUOTE_DIR" pull --ff-only
+      exec bash "$QUOTE_DIR/install.sh" --update
     fi
     git clone https://github.com/sumanth-lingappa/quote-me-when-you-can.git "$QUOTE_DIR"
     ;;

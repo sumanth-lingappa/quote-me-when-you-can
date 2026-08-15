@@ -23,7 +23,9 @@ if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
 if ($Update) {
     git -C $QuoteDir pull --ff-only
 } elseif (Test-Path $QuoteDir) {
-    throw 'Already installed. Run: & "$HOME\.quote-me\install.ps1" -Update'
+    git -C $QuoteDir pull --ff-only
+    & "$QuoteDir\install.ps1" -Update
+    exit $LASTEXITCODE
 } else {
     git clone https://github.com/sumanth-lingappa/quote-me-when-you-can.git $QuoteDir
 }

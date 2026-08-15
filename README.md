@@ -39,10 +39,9 @@ Restart PowerShell, then run:
 irm https://raw.githubusercontent.com/sumanth-lingappa/quote-me-when-you-can/master/install.ps1 | iex
 ```
 
-To update quotes or remove the integration:
+Run the install command again to update quotes. To remove the integration:
 
 ```bash
-bash ~/.quote-me/install.sh --update
 bash ~/.quote-me/install.sh --uninstall
 
 # Windows PowerShell

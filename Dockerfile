@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 RUN HOME=/tmp/quote-home bash install.sh \
+ && HOME=/tmp/quote-home bash install.sh \
  && FIRST="$(HOME=/tmp/quote-home zsh -ic 'true')" \
  && SECOND="$(HOME=/tmp/quote-home zsh -ic 'true')" \
  && test -n "$FIRST" \
