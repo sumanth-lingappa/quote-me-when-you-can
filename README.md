@@ -3,9 +3,9 @@ fortune based custom quotes whenever you need
 
 add your own quotes in [quotes](./quotes/) folder
 
-## Daily quote in Terminal
+## Quote in Terminal
 
-Shows one quote on the first terminal launch each day.
+Shows a quote whenever you open a new terminal. Run `fortune` any time for another.
 
 ## Installation
 

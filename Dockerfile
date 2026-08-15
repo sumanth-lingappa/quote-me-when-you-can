@@ -11,6 +11,6 @@ RUN HOME=/tmp/quote-home bash install.sh \
  && FIRST="$(HOME=/tmp/quote-home zsh -ic 'true')" \
  && SECOND="$(HOME=/tmp/quote-home zsh -ic 'true')" \
  && test -n "$FIRST" \
- && test -z "$SECOND" \
+ && test -n "$SECOND" \
  && HOME=/tmp/quote-home bash install.sh --uninstall \
  && ! grep -q 'quote-me start' /tmp/quote-home/.zshrc

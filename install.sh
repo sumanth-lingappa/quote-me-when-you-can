@@ -33,15 +33,14 @@ esac
 command -v fortune >/dev/null || { echo "Install Fortune first: brew install fortune"; exit 1; }
 bash "$QUOTE_DIR/scripts/update_fortune.sh"
 
-if [[ "${1:-}" != "--update" ]]; then
-  cat >> "$SHELL_RC" <<'EOF'
+[[ -f "$SHELL_RC" ]] && sed -i.bak '/# quote-me start/,/# quote-me end/d' "$SHELL_RC" && rm "$SHELL_RC.bak"
+
+cat >> "$SHELL_RC" <<'EOF'
 
 # quote-me start
-QUOTE_DATE_FILE="$HOME/.quote-me-last-shown"
-if [[ $- == *i* && "$(cat "$QUOTE_DATE_FILE" 2>/dev/null)" != "$(date +%F)" ]]; then
-  fortune "$HOME/fortunes"
-  date +%F > "$QUOTE_DATE_FILE"
+alias fortune='command fortune "$HOME/fortunes"'
+if [[ $- == *i* ]]; then
+  fortune
 fi
 # quote-me end
 EOF
-fi
