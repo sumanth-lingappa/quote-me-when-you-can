@@ -4,7 +4,7 @@
 SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 # Path to the directory containing quote files
-QUOTE_DIR=$SCRIPT_DIR/quotes
+QUOTE_DIR=$(dirname "$SCRIPT_DIR")/quotes
 
 # Path to the standard fortune database
 STANDARD_DATABASE_DIR=~/fortunes
