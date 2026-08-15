@@ -3,6 +3,20 @@ fortune based custom quotes whenever you need
 
 add your own quotes in [quotes](./quotes/) folder
 
+## Daily quote in Terminal
+
+```bash
+brew install fortune
+curl -fsSL https://raw.githubusercontent.com/sumanth-lingappa/quote-me-when-you-can/master/install.sh | bash
+```
+
+This shows one quote on the first terminal launch each day.
+
+```bash
+bash ~/.quote-me/install.sh --update
+bash ~/.quote-me/install.sh --uninstall
+```
+
 ## How it is seen
 
 <img width="446" alt="image" src="https://github.com/sumanth-lingappa/quote-me-when-you-can/assets/42572246/15f5f210-6208-43bc-aacc-3d22749e5b04">
@@ -89,6 +103,3 @@ echo "alias fortune='fortune $HOME/fortunes | cowsay | lolcat'" >> ~/.zshrc
         
 ❯
 ```
-
-
-
