@@ -27,10 +27,16 @@ exec zsh
 
 ### Windows
 
-Use WSL (Windows Subsystem for Linux), then follow the Linux steps inside its Ubuntu terminal:
+For native PowerShell support:
 
 ```powershell
-wsl --install
+winget install --id Git.Git -e
+```
+
+Restart PowerShell, then run:
+
+```powershell
+irm https://raw.githubusercontent.com/sumanth-lingappa/quote-me-when-you-can/master/install.ps1 | iex
 ```
 
 To update quotes or remove the integration:
@@ -38,6 +44,10 @@ To update quotes or remove the integration:
 ```bash
 bash ~/.quote-me/install.sh --update
 bash ~/.quote-me/install.sh --uninstall
+
+# Windows PowerShell
+& "$HOME\.quote-me\install.ps1" -Update
+& "$HOME\.quote-me\install.ps1" -Uninstall
 ```
 
 Test the installer in Docker:
