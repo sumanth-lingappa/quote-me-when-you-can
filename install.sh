@@ -19,7 +19,7 @@ case "${1:-}" in
     ;;
   '')
     if [[ -d "$QUOTE_DIR" ]]; then
-      echo "Already installed. Run: bash install.sh --update"
+      echo "Already installed. Run: bash ~/.quote-me/install.sh --update"
       exit 0
     fi
     git clone https://github.com/sumanth-lingappa/quote-me-when-you-can.git "$QUOTE_DIR"
