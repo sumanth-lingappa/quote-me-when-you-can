@@ -55,10 +55,10 @@ git clone git@github.com:sumanth-lingappa/quote-me-when-you-can.git
 cd quote-me-when-you-can
 ```
 
-### Run the `update_fortune.sh` file
+### Run the `scripts/update_fortune.sh` file
 
 ```bash
-bash update_fortune.sh
+bash scripts/update_fortune.sh
 ```
 
 > This will create the `fortune.dat` file  to `$HOME/fortunes/` folder

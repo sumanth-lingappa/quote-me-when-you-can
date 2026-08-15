@@ -27,7 +27,7 @@ case "${1:-}" in
 esac
 
 command -v fortune >/dev/null || { echo "Install Fortune first: brew install fortune"; exit 1; }
-bash "$QUOTE_DIR/update_fortune.sh"
+bash "$QUOTE_DIR/scripts/update_fortune.sh"
 
 if [[ "${1:-}" != "--update" ]]; then
   cat >> "$SHELL_RC" <<'EOF'
