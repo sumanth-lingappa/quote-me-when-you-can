@@ -5,12 +5,13 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $QuoteDir = Join-Path $HOME '.quote-me'
+$ProfilePath = if ($PROFILE) { $PROFILE } else { Join-Path $HOME '.config/powershell/Microsoft.PowerShell_profile.ps1' }
 
 if ($Uninstall) {
-    if (Test-Path $PROFILE) {
-        $profile = Get-Content $PROFILE -Raw
+    if (Test-Path $ProfilePath) {
+        $profile = Get-Content $ProfilePath -Raw
         $profile = $profile -replace '(?s)\r?\n?# quote-me start.*?# quote-me end\r?\n?', ''
-        Set-Content $PROFILE $profile -NoNewline
+        Set-Content $ProfilePath $profile -NoNewline
     }
     exit
 }
@@ -28,9 +29,9 @@ if ($Update) {
 }
 
 if (-not $Update) {
-    New-Item -ItemType Directory -Force (Split-Path $PROFILE) | Out-Null
-    New-Item -ItemType File -Force $PROFILE | Out-Null
-    Add-Content $PROFILE @'
+    New-Item -ItemType Directory -Force (Split-Path $ProfilePath) | Out-Null
+    New-Item -ItemType File -Force $ProfilePath | Out-Null
+    Add-Content $ProfilePath @'
 
 # quote-me start
 function quote-me {

@@ -3,7 +3,11 @@
 set -e
 
 QUOTE_DIR="$HOME/.quote-me"
-SHELL_RC="$HOME/.zshrc"
+if [[ "${SHELL:-}" == */bash ]]; then
+  SHELL_RC="$HOME/.bashrc"
+else
+  SHELL_RC="$HOME/.zshrc"
+fi
 
 case "${1:-}" in
   --uninstall)
@@ -34,7 +38,7 @@ if [[ "${1:-}" != "--update" ]]; then
 
 # quote-me start
 QUOTE_DATE_FILE="$HOME/.quote-me-last-shown"
-if [[ -o interactive && "$(cat "$QUOTE_DATE_FILE" 2>/dev/null)" != "$(date +%F)" ]]; then
+if [[ $- == *i* && "$(cat "$QUOTE_DATE_FILE" 2>/dev/null)" != "$(date +%F)" ]]; then
   fortune "$HOME/fortunes"
   date +%F > "$QUOTE_DATE_FILE"
 fi
