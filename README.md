@@ -5,12 +5,35 @@ add your own quotes in [quotes](./quotes/) folder
 
 ## Daily quote in Terminal
 
+Shows one quote on the first terminal launch each day.
+
+## Installation
+
+### macOS
+
 ```bash
 brew install fortune
 curl -fsSL https://raw.githubusercontent.com/sumanth-lingappa/quote-me-when-you-can/master/install.sh | bash
 ```
 
-This shows one quote on the first terminal launch each day.
+### Linux
+
+```bash
+sudo apt-get update
+sudo apt-get install -y fortune-mod git zsh
+curl -fsSL https://raw.githubusercontent.com/sumanth-lingappa/quote-me-when-you-can/master/install.sh | bash
+exec zsh
+```
+
+### Windows
+
+Use WSL (Windows Subsystem for Linux), then follow the Linux steps inside its Ubuntu terminal:
+
+```powershell
+wsl --install
+```
+
+To update quotes or remove the integration:
 
 ```bash
 bash ~/.quote-me/install.sh --update
