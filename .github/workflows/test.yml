@@ -32,8 +32,7 @@ jobs:
       - if: matrix.shell == 'pwsh'
         shell: pwsh
         run: |
-          $env:HOME = Join-Path $env:RUNNER_TEMP "quote-me-$([guid]::NewGuid())"
-          New-Item -ItemType Directory $env:HOME | Out-Null
+          Remove-Item "$HOME/.quote-me" -Recurse -Force -ErrorAction SilentlyContinue
           ./install.ps1
           ./install.ps1
           $first = pwsh -Command '$null'
