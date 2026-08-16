@@ -42,12 +42,40 @@ Add-Content $ProfilePath @'
 
 # quote-me start
 function quote-me {
-    $files = Get-ChildItem "$HOME\.quote-me\quotes" -Filter '*.quote' -File
+    $files = Get-ChildItem (Join-Path $HOME '.quote-me/quotes') -Filter '*.quote' -File
     $quotes = (($files | ForEach-Object { Get-Content $_.FullName -Raw }) -join "`n") -split '(?m)^%\s*$'
     ($quotes | Where-Object { $_.Trim() } | Get-Random).Trim()
 }
 
-function fortune { quote-me }
+function Update-QuoteMe {
+    git -C (Join-Path $HOME '.quote-me') pull --ff-only
+}
+
+function fortune {
+    param([Parameter(ValueFromRemainingArguments = $true)][string[]]$Arguments)
+    $command = if ($Arguments) { $Arguments[0] } else { '' }
+    switch ($command) {
+        '--update' { Update-QuoteMe }
+        '--auto-update' { Set-Content (Join-Path $HOME '.quote-me-auto-update') 'true'; Update-QuoteMe }
+        '--no-auto-update' { Remove-Item (Join-Path $HOME '.quote-me-auto-update') -Force -ErrorAction SilentlyContinue }
+        default { quote-me }
+    }
+}
+
+function Test-QuoteMeUpdate {
+    $quoteDir = Join-Path $HOME '.quote-me'
+    git -C $quoteDir fetch --quiet origin master 2>$null
+    if ($LASTEXITCODE -ne 0) { return }
+    if ((git -C $quoteDir rev-parse HEAD) -ne (git -C $quoteDir rev-parse origin/master)) {
+        if (Test-Path (Join-Path $HOME '.quote-me-auto-update')) {
+            fortune --update
+        } else {
+            Write-Host 'New quotes are available. Run fortune --update, or fortune --auto-update to update automatically.'
+        }
+    }
+}
+
 quote-me
+Test-QuoteMeUpdate
 # quote-me end
 '@

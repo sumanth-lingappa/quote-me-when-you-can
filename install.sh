@@ -38,9 +38,32 @@ bash "$QUOTE_DIR/scripts/update_fortune.sh"
 cat >> "$SHELL_RC" <<'EOF'
 
 # quote-me start
-alias fortune='command fortune "$HOME/fortunes"'
+quote-me-update() {
+  git -C "$HOME/.quote-me" pull --ff-only && bash "$HOME/.quote-me/scripts/update_fortune.sh"
+}
+
+fortune() {
+  case "${1:-}" in
+    --update) quote-me-update ;;
+    --auto-update) printf 'true\n' > "$HOME/.quote-me-auto-update"; quote-me-update ;;
+    --no-auto-update) rm -f "$HOME/.quote-me-auto-update" ;;
+    *) command fortune "$@" "$HOME/fortunes" ;;
+  esac
+}
+
+quote-me-check-update() {
+  git -C "$HOME/.quote-me" fetch --quiet origin master 2>/dev/null || return
+  [[ "$(git -C "$HOME/.quote-me" rev-parse HEAD)" == "$(git -C "$HOME/.quote-me" rev-parse origin/master)" ]] && return
+  if [[ -f "$HOME/.quote-me-auto-update" ]]; then
+    fortune --update
+  else
+    printf '\nNew quotes are available. Run fortune --update, or fortune --auto-update to update automatically.\n'
+  fi
+}
+
 if [[ $- == *i* ]]; then
   fortune
+  quote-me-check-update
 fi
 # quote-me end
 EOF

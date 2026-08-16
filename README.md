@@ -49,6 +49,9 @@ bash ~/.quote-me/install.sh --uninstall
 & "$HOME\.quote-me\install.ps1" -Uninstall
 ```
 
+When a new terminal opens, it checks for new quotes and prompts you to update.
+Use `fortune --auto-update` to turn on automatic updates, or `fortune --no-auto-update` to turn them off.
+
 Test the installer in Docker:
 
 ```bash

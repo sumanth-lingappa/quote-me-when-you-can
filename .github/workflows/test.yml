@@ -28,6 +28,8 @@ jobs:
           second="$("/bin/$TEST_SHELL" -ic "source \"$shell_rc\"")"
           test -n "$first"
           test -n "$second"
+          "/bin/$TEST_SHELL" -ic "source \"$shell_rc\"; fortune --auto-update"
+          test -f "$HOME/.quote-me-auto-update"
           bash install.sh --uninstall
       - if: matrix.shell == 'pwsh'
         shell: pwsh
@@ -38,4 +40,6 @@ jobs:
           $first = pwsh -Command '$null'
           $second = pwsh -Command '$null'
           if ([string]::IsNullOrWhiteSpace($first) -or [string]::IsNullOrWhiteSpace($second)) { throw 'Quote check failed' }
+          pwsh -Command 'fortune --auto-update'
+          if (-not (Test-Path "$HOME/.quote-me-auto-update")) { throw 'Auto-update was not enabled' }
           ./install.ps1 -Uninstall
